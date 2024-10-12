@@ -59,6 +59,71 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  document.body.addEventListener("keypress", (key)=>{
+    if (!key.defaultPrevented) {
+      const index = getElementIndex(key);
+      squareOnPlay(index);
+    }
+    key.preventDefault();
+  })
+
+  const squareOnPlay = (index) => {
+    const keySquare = document.getElementsByClassName("key")[index];
+    const promise = new Promise((resolve)=>{
+      keySquare.classList.add("playing");
+      playSound(index);
+      setTimeout(()=>{
+        resolve();
+      }, 100)
+    })
+    promise.then(()=>{
+      keySquare.classList.remove("playing");
+    })
+  }
+
+  const playSound = (index) => {
+    const sound = document.getElementsByTagName("audio")[index];
+    sound.currentTime = 0;
+    sound.play();
+  }
+
+  const getElementIndex = (key) => {
+    let index = 0;
+    switch (key.key) {
+      case 'a':
+        index = 0;
+        break
+      case 's':
+        index = 1;
+        break
+      case 'd':
+        index = 2;
+        break
+      case 'f':
+        index = 3;
+        break
+      case 'g':
+        index = 4;
+        break
+      case 'h':
+        index = 5;
+        break
+      case 'j':
+        index = 6;
+        break
+      case 'k':
+        index = 7;
+        break
+      case 'l':
+        index = 8;
+        break
+      default:
+        index = -1;
+        console.log("No matched key");
+        break
+    }
+    return index;
+  }
 
 </script>
 
