@@ -62,7 +62,7 @@
   document.body.addEventListener("keypress", (key)=>{
     if (!key.defaultPrevented) {
       const index = getElementIndex(key);
-      squareOnPlay(index);
+      if (index >= 0) squareOnPlay(index);
     }
     key.preventDefault();
   })
