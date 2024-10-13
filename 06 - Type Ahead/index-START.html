@@ -16,7 +16,55 @@
     </ul>
   </form>
 <script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  const textInput = document.querySelector(".search");
+  const suggestion = document.querySelector(".suggestions");
+
+  const cities = [];
+
+  fetch(endpoint)
+          .then(data => data.json())
+          .then(places => {
+            places.forEach(place => cities.push(place))
+          });
+
+
+  // city:"Redding"
+  // growth_from_2000_to_2013:"11.9%"
+  // latitude:40.5865396
+  // longitude:-122.3916754
+  // population:"91119"
+  // rank:"334"
+  // state:"California"
+  function matchCities(text, c) {
+    const reg = new RegExp(text, "gi");
+    c = c.filter(city => reg.test(city.city) || reg.test(city.state));
+    const HTMLs = c.map(city => {
+      let hlCity = city.city.replace(reg, `<span class="hl">${text}</span>`);
+      let hlState = city.state.replace(reg, `<span class="hl">${text}</span>`);
+      let Population = city.population.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return `<li>
+            <span class="name">${hlCity}, ${hlState}</span>
+            <span class="population">${Population}</span>
+        </li>`;
+            }
+    )
+    suggestion.innerHTML = HTMLs.join('\n');
+    console.log(HTMLs);
+  }
+
+  function textHandler() {
+    const text = this.value;
+    matchCities(text, cities);
+  }
+
+  textInput.addEventListener("keyup", textHandler);
+  textInput.addEventListener("change", textHandler);
+
+  // console.log(cities);
+
+
+
 
 </script>
 </body>
