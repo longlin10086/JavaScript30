@@ -27,3 +27,9 @@
       transform: translate(-50%, -50%);
     }
 ```
+
+## 参考资料
+
+- [MDN 伪类](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements)
+- [MDN box-shadow](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow)
+- [MDN setInterval](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setInterval)
