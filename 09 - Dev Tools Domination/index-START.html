@@ -18,29 +18,69 @@
       p.style.fontSize = '50px';
     }
 
+
     // Regular
+    console.log(dogs);
 
     // Interpolated
+    console.log(`This is ${dogs}`);
 
     // Styled
+    console.log("%c This is a style log", "background: cyan; font-size: 15px");
 
     // warning!
+    console.warn("Warnnnnnnning");
 
     // Error :|
+    console.error("Errrrrrror");
 
     // Info
+    console.info("PAY ATTENTION");
 
     // Testing
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains("ok"), "Noooo");
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
 
     // Grouping together
+    console.groupCollapsed("111");
+    console.log("okokokoko");
+    console.log("nonononon");
+    console.log("hihihihih");
+    console.groupEnd();
+    console.groupCollapsed("222");
+    console.log("wahtwaht");
+    console.log("howhowho");
+    console.log("whywhywh");
+    console.groupEnd();
 
     // counting
+    console.count("wahtwaht");
+    console.count("wahtwaht");
+    console.count("wahtwaht");
+    console.count("wahtwaht");
+    console.count("wahtwaht");
+    console.count("wahtwah");
 
     // timing
+    console.time("2121");
+    console.groupCollapsed("111");
+    console.log("okokokoko");
+    console.log("nonononon");
+    console.log("hihihihih");
+    console.groupEnd();
+    console.groupCollapsed("222");
+    console.log("wahtwaht");
+    console.log("howhowho");
+    console.log("whywhywh");
+    console.groupEnd();
+    console.timeEnd("2121");
 
   </script>
 </body>
