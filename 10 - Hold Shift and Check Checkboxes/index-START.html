@@ -50,6 +50,11 @@
       font-weight: 200;
       border-left: 1px solid #D1E2FF;
     }
+
+    .lastChecked {
+      color: #FFF78A;
+    }
+
   </style>
    <!--
    The following is a common layout you would see in an email client.
@@ -97,6 +102,22 @@
   </div>
 
 <script>
+  const checkboxes = document.querySelectorAll(".item input");
+  let lastChecked;
+
+  function getChecked(e) {
+    let isBetween = false;
+    checkboxes.forEach(checkbox => {
+      if (e.shiftKey) {
+        // console.log(checkbox);
+        if (checkbox === this || checkbox === lastChecked) isBetween = !isBetween;
+        if (isBetween) checkbox.checked = true;
+      }
+    });
+    lastChecked = this;
+  }
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener("click", getChecked));
 </script>
 </body>
 </html>
